@@ -1,0 +1,344 @@
+.container{
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 12px;
+}
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    background-color: var(--color-primary-50);
+    padding: 12px 0;
+    position: sticky; /* 讓 header 固定在頁面頂部 */
+    top: 0; /* 確保 header 貼齊頁面頂部 */
+    left: 0; /* 確保 header 貼齊頁面左側 */
+    z-index: 3;
+}
+/*rwd*/
+@media (max-width: 992px){
+.header{
+        margin: 0 -12px;
+    }
+/*鎖定滾動   當 body 內部含有「被勾選」的 .menutoggle 時，鎖定整個網頁的捲軸 */
+html:has(.menutoggle:checked),
+body:has(.menutoggle:checked) {
+    overflow: hidden;
+    height: 100vh; /* 確保在行動裝置瀏覽器上高度被限制，完全鎖定滾動 */
+}
+/*遮罩樣式*/
+body:has(.menutoggle:checked) .mask{
+    position: fixed; /* 固定在螢幕，確保遮罩覆蓋整個畫面 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-dark-60a); /* 半透明黑色遮罩，增強選單的可讀性 */
+    z-index: 2; /* 確保遮罩在選單下方，但在其他內容之上 */
+}
+.menu-btn {
+    position: relative;
+    z-index: 3; /* 層級需高於遮罩,使用者才能在開啟後再次點擊它來關閉 */
+    cursor: pointer;
+} 
+}
+.nav-btn{
+    color: var(--color-neutral-700);
+    padding: 4px 12px;
+    gap:10px;
+    z-index: 3;
+}
+.nav-btn:hover{
+    border: 2px solid rgb(59, 59, 59);
+}
+/* 隱藏用於控制狀態的 checkbox */
+.menutoggle {
+    display: none;
+}
+/*rwd*/
+@media (max-width: 992px){
+    .navlist{
+        display: none;
+    }
+    /*使用類別選擇器 .menutoggle 與 .navlist，配合偽類 :checked 與同層選擇器*/
+    .menutoggle:checked ~ .navlist {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: var(--color-primary-50);
+        font-size: 14px;
+        font-weight: 500;
+        width: 100%;
+        text-align: center;
+        gap: 12px;
+        padding: 12px 0;
+        z-index: 3;
+    }
+    /*漢堡選單變 X 符號*/
+    .menutoggle:checked ~ .menu-btn .material-symbols-outlined {
+        font-size: 0; /* 隱藏原字型 dehaze */
+    }
+    .menutoggle:checked ~ .menu-btn .material-symbols-outlined::before {
+        content: "close"; /* 置換成 Material Symbols 的打叉符號 */
+        font-size: 24px;  /* 還原字型大小 */
+    }
+}
+.banner{
+    background-image: url('https://raw.githubusercontent.com/hexschool/2022-web-layout-training/015dd339d657d3c861618d8d633f920c6b6da4f0/2026-web-camp/project_banner.png');
+    height:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.blog{
+     color: var(--color-neutral-0);
+    text-align: center;
+    padding: 109px 312px;
+}
+/*rwd*/
+@media (max-width: 375px){
+    .banner{
+        background-image: url('https://raw.githubusercontent.com/hexschool/2022-web-layout-training/015dd339d657d3c861618d8d633f920c6b6da4f0/2026-web-camp/mobile/project_banner.png');
+        background-repeat: no-repeat;
+        }
+    .blog{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 142px 12px;
+    }
+    .blogfont{
+        line-height: 1.2;
+    }
+}
+.content{
+    margin: 0 auto;
+    padding: 0 12px;
+   }
+.menu{
+     margin: 40px auto;
+}
+.menu-item{
+     text-align: center;
+     color: var(--color-neutral-700);
+}
+.menu-link{
+    width: 258.4px;   
+    display: block;
+    padding: 12px 0;
+    color: inherit; 
+}
+.menu-item.active,
+.menu-item:hover{
+    background-color: var(--color-primary-900);
+    color: var(--color-neutral-0);
+}
+.menufont{
+    display: flex;
+    justify-content: space-around;
+}
+@media (max-width: 992px){
+   .menu-link{
+        width: auto;
+        padding: 8px 0;
+        white-space: nowrap; /* 防止文字換行，保持在一行內 */
+        overflow-x: auto; /* 允許水平滾動，當內容超出容器寬度時 */
+    }
+    .menufont{
+        line-height: 1.2;
+    }
+}
+.cardword{
+    width: 386px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-primary-50);
+    backdrop-filter: blur(8px);
+    color: var(--color-neutral-700); /*p.h2.date顏色相同情況下*/
+    padding: 40px;
+    text-align: center;
+}
+.cardimg1{
+    background-image: url('https://raw.githubusercontent.com/hexschool/2022-web-layout-training/015dd339d657d3c861618d8d633f920c6b6da4f0/2026-web-camp/project_1.png');
+    background-size: cover;       /* 確保背景圖片完整覆蓋容器 */
+    background-position: center;  /* 背景圖片置中對齊 */
+    display: flex;                /* 啟用 Flex 彈性排版，控制子層卡片的排列 */
+    align-items: center;          /* 【關鍵】讓子層 .cardword 垂直置中，不再上下撐滿 */
+    justify-content: flex-start;  /* 讓子層 .cardword 水平靠左對齊 */
+    padding: 28px;                /* 【關鍵】在四周加上 28px 內距，產生卡片懸浮、四周留白的效果 */
+}
+.cardimg2{
+    background-image: url('https://raw.githubusercontent.com/hexschool/2022-web-layout-training/015dd339d657d3c861618d8d633f920c6b6da4f0/2026-web-camp/project_2.png');
+    background-size: cover;     
+    background-position: center;  
+    display: flex;               
+    align-items: center;          
+    justify-content: flex-start; 
+    padding: 28px;               
+}
+.cardimg3{
+    background-image: url('https://raw.githubusercontent.com/hexschool/2022-web-layout-training/015dd339d657d3c861618d8d633f920c6b6da4f0/2026-web-camp/project_3.png');
+    background-size: cover;      
+    background-position: center;  
+    display: flex;                
+    align-items: center;          
+    justify-content: flex-start;  
+    padding: 28px;                
+}
+.cardimg4{
+    background-image: url('https://raw.githubusercontent.com/hexschool/2022-web-layout-training/015dd339d657d3c861618d8d633f920c6b6da4f0/2026-web-camp/project_4.png');
+    background-size: cover; 
+    background-position: center; 
+    display: flex;                
+    align-items: center;          
+    justify-content: flex-start; 
+    padding: 28px;                
+}
+.filled-btn:hover{
+    background: var(--color-neutral-900);
+}
+/*rwd*/
+@media (max-width: 768px){
+    .cardword{
+              width: 100%;
+              padding: 24px;
+    }
+    .cardimg1{
+              background-image: url('https://raw.githubusercontent.com/hexschool/2022-web-layout-training/015dd339d657d3c861618d8d633f920c6b6da4f0/2026-web-camp/mobile/project_1.png');
+              padding: 16px;
+              height: auto;
+              flex-direction: column;
+              justify-content: flex-end;
+              padding: 280px 16px 16px; /* 上方留出足夠空間給圖片，底部和兩側保持一致的內距 */
+              margin-bottom: 12px; /* 卡片之間的垂直間距 */
+    }
+    .cardimg2{
+              background-image: url('https://raw.githubusercontent.com/hexschool/2022-web-layout-training/015dd339d657d3c861618d8d633f920c6b6da4f0/2026-web-camp/mobile/project_2.png');
+              padding: 16px;
+              height: auto;
+              flex-direction: column;
+              justify-content: flex-end;
+              padding: 280px 16px 16px;
+              margin-bottom: 12px;
+    }
+    .cardimg3{
+              background-image: url('https://raw.githubusercontent.com/hexschool/2022-web-layout-training/015dd339d657d3c861618d8d633f920c6b6da4f0/2026-web-camp/mobile/project_3.png');
+              padding: 16px;
+              height: auto;
+              flex-direction: column;
+              justify-content: flex-end;
+              padding: 280px 16px 16px;
+              margin-bottom: 12px;
+    }
+    .cardimg4{
+              background-image: url('https://raw.githubusercontent.com/hexschool/2022-web-layout-training/015dd339d657d3c861618d8d633f920c6b6da4f0/2026-web-camp/mobile/project_4.png');
+              padding: 16px;
+              height: auto;
+              flex-direction: column;
+              justify-content: flex-end;
+              padding: 280px 16px 16px;
+    }
+}
+.more{
+    display: flex;
+    justify-content: center;
+    margin: 80px auto;
+}
+/*rwd*/
+@media (max-width: 992px){
+    .more{
+        margin: 40px auto;
+    }
+}
+.contact-bg {
+  background: var(--color-primary-900);
+}
+
+.contact {
+  color: var(--color-neutral-0);
+  display: flex;
+  justify-content: space-between;
+  padding: 80px 0;
+}
+.contact-word{
+    color: var(--color-neutral-0);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.contact-word-img{
+    justify-content: flex-start;
+}
+.contact-form {
+  width: 58%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 0 40px;
+}
+.form{
+  display:flex;
+  gap: 24px;
+}
+.form-input {
+  width: 100%;
+  color: #fff;
+  background: transparent;
+  border: 1px solid var(--color-neutral-0);
+  border-radius: 40px;
+  outline: none;
+  padding: 20px 32px;
+}
+.form-input::placeholder {
+  color: var(--color-neutral-0);
+}
+.form-message{
+  color: #fff;
+  background: transparent;
+  width: 100%;
+  height: 136px;
+  border: 1px solid var(--color-neutral-0);
+  border-radius: 40px;
+  outline: none;
+  resize: none;
+  padding: 20px 32px;
+}
+.form-message::placeholder {
+  color: var(--color-neutral-0);
+}
+.submit{
+  color: var(--color-neutral-700);
+  background: var(--color-neutral-0);
+  width: 100%;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  padding: 12px 0;
+}
+.submit:hover{
+    background: var(--color-primary-900);
+    border: 1px solid var(--color-neutral-0);
+    color: var(--color-neutral-0);
+}
+/*rwd*/
+@media (max-width: 992px){
+    .contact {
+        flex-direction: column;
+        padding: 40px 0;
+    }
+    .contact-word-img{
+    margin-top: 24px;
+   }
+    .contact-form {
+        width: 100%;
+        padding: 0;
+    }
+    .form{
+        flex-direction: column;
+    }
+}
