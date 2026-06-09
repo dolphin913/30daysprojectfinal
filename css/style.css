@@ -144,9 +144,9 @@ body:has(.menutoggle:checked) .mask{
         width: auto;
         padding: 8px 0;
         white-space: nowrap; /* 防止文字換行，保持在一行內 */
-        overflow-x: auto; /* 允許水平滾動，當內容超出容器寬度時 */
     }
     .menufont{
+        overflow-x: auto; /* 允許水平滾動 */
         line-height: 1.2;
     }
 }
