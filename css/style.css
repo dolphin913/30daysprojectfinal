@@ -146,8 +146,10 @@ body:has(.menutoggle:checked) .mask{
         white-space: nowrap; /* 防止文字換行，保持在一行內 */
     }
     .menufont{
-        overflow-x: auto; /* 允許水平滾動 */
         line-height: 1.2;
+    }
+    .menu{
+        overflow-x: auto; /* 允許水平滾動 */
     }
 }
 .cardword{
